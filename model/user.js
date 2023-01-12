@@ -16,9 +16,9 @@ const userSchema = mongoose.Schema({
     bookmarks: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Item'
+            ref: 'items'
         }
     ]
 })
 
-exports.User = mongoose.model('User', userSchema);
+exports.User = mongoose.model('users', userSchema);
