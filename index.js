@@ -5,7 +5,7 @@ require("dotenv").config();
 const routes = require("./router/commonRouter")
 
 const app = express();
-const contextPath = '/cookbook';
+const contextPath = '/api';
 
 app.use(express.json());
 app.use(contextPath + '/public', express.static('public'));
