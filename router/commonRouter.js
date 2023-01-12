@@ -16,7 +16,7 @@ router.get('/getCategories', async (req, res) => {
 
 router.post('/getItemsForCategory', async (req, res) => {
     try {
-        const categoryList = await Item.find({"category": req.body.categoryId});
+        const categoryList = await Item.find({"calorie": { $gt: req.body.minCal, $lt: req.body.maxCal }});
         const filtered = [];
         if (req.body.username && req.body.username.trim() !== "") {
             const user = await User.findById(req.body.username);
