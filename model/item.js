@@ -33,6 +33,16 @@ const itemSchema = mongoose.Schema({
     calcium: {
         type: Number
     },
+    ingredients: [
+        {
+            name: {
+                type: String
+            },
+            quantity: {
+                type: String
+            },
+        }
+    ]
 })
 
 exports.Item = mongoose.model('items', itemSchema);

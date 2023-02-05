@@ -96,7 +96,7 @@ router.post('/register', async (req, res) => {
                 name: req.body.name,
                 password: req.body.password,
                 username: req.body.username,
-                subCategory: [],
+                bookmarks: [],
             })
             user = await user.save();
             res.status(200).send({code: 0});
@@ -123,10 +123,10 @@ router.post('/login', async (req, res) => {
 
 router.get('/getBookmarksForUser/:userId', async (req, res) => {
     try {
-        const bookmarks = await User.findById(req.params.userId).populate("bookmarks");
+        const user = await User.findById(req.params.userId).populate("bookmarks");
         let filtered = [];
-        for (let x = 0; x < bookmarks.bookmarks.length; x++) {
-            let item = bookmarks.bookmarks[x].toObject();
+        for (let x = 0; x < user.bookmarks.length; x++) {
+            let item = user.bookmarks[x].toObject();
             item.isBookMarked = true
             filtered.push(item);
         }
